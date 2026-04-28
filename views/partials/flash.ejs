@@ -1,0 +1,16 @@
+<% if (typeof successFlash !== 'undefined' && successFlash && successFlash.length > 0) { %>
+  <% successFlash.forEach(msg => { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <i class="bi bi-check-circle me-2"></i><%= msg %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  <% }) %>
+<% } %>
+<% if (typeof errorFlash !== 'undefined' && errorFlash && errorFlash.length > 0) { %>
+  <% errorFlash.forEach(msg => { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <i class="bi bi-exclamation-triangle me-2"></i><%= msg %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  <% }) %>
+<% } %>

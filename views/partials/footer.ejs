@@ -1,0 +1,24 @@
+<footer class="footer bg-dark text-white mt-5 py-4">
+  <div class="container-xl">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <h6 class="fw-bold"><i class="bi bi-book-half me-2"></i>LibraryMS</h6>
+        <p class="text-muted small mb-0">Your campus library at your fingertips. Borrow, purchase, and manage books with ease.</p>
+      </div>
+      <div class="col-md-4">
+        <h6 class="fw-bold">Quick Links</h6>
+        <ul class="list-unstyled small">
+          <li><a href="/" class="text-muted text-decoration-none">Home</a></li>
+          <li><a href="/books" class="text-muted text-decoration-none">Browse Books</a></li>
+          <% if (!user) { %>
+            <li><a href="/auth/login" class="text-muted text-decoration-none">Login</a></li>
+            <li><a href="/auth/register" class="text-muted text-decoration-none">Register</a></li>
+          <% } %>
+        </ul>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <p class="small text-muted mb-0">&copy; <%= new Date().getFullYear() %> LibraryMS. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
