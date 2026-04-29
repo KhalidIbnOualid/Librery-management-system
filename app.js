@@ -7,6 +7,7 @@ const path           = require('path');
 const session        = require('express-session');
 const flash          = require('connect-flash');
 const methodOverride = require('method-override');
+const rateLimit      = require('express-rate-limit');
 
 const app = express();
 
@@ -29,7 +30,12 @@ app.use(session({
   secret:            process.env.SESSION_SECRET || 'library_secret_key',
   resave:            false,
   saveUninitialized: false,
-  cookie:            { maxAge: 1000 * 60 * 60 * 24 }, // 1 day
+  cookie:            {
+    maxAge:   1000 * 60 * 60 * 24, // 1 day
+    httpOnly: true,
+    secure:   process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+  },
 }));
 
 // ---------- Flash ----------
@@ -43,13 +49,22 @@ app.use((req, res, next) => {
   next();
 });
 
+// ---------- Rate limiting (auth routes) ----------
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max:      20,
+  message:  'Too many requests from this IP, please try again after 15 minutes.',
+  standardHeaders: true,
+  legacyHeaders:   false,
+});
+
 // ---------- Routes ----------
 const authRoutes    = require('./routes/auth');
 const studentRoutes = require('./routes/student');
 const booksRoutes   = require('./routes/books');
 const adminRoutes   = require('./routes/admin');
 
-app.use('/auth',    authRoutes);
+app.use('/auth',    authLimiter, authRoutes);
 app.use('/admin',   adminRoutes);
 app.use('/books',   booksRoutes);
 app.use('/',        studentRoutes);
