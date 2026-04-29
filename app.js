@@ -49,7 +49,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// ---------- Rate limiting (auth routes) ----------
+// ---------- Rate limiting ----------
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max:      20,
@@ -57,6 +57,16 @@ const authLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders:   false,
 });
+
+const generalLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max:      120,
+  standardHeaders: true,
+  legacyHeaders:   false,
+});
+
+// Apply general limiter globally
+app.use(generalLimiter);
 
 // ---------- Routes ----------
 const authRoutes    = require('./routes/auth');

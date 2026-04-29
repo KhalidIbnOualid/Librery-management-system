@@ -15,7 +15,12 @@ exports.postRegister = async (req, res) => {
   const old    = { name, email };
 
   if (!name || name.trim().length < 2)           errors.push('Name must be at least 2 characters.');
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))     errors.push('A valid email is required.');
+  // Simple deterministic email check: must have exactly one '@', domain must contain a '.'
+  const emailValid = (function(v) {
+    const parts = (v || '').split('@');
+    return parts.length === 2 && parts[0].length > 0 && parts[1].includes('.');
+  }(email));
+  if (!emailValid) errors.push('A valid email is required.');
   if (!password || password.length < 6)          errors.push('Password must be at least 6 characters.');
   if (password !== confirmPassword)              errors.push('Passwords do not match.');
 
