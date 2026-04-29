@@ -1,0 +1,173 @@
+/* ============================================================
+   LibraryMS – Custom Stylesheet
+   ============================================================ */
+
+/* ---- Root variables ---- */
+:root {
+  --primary: #0d6efd;
+  --sidebar-width: 240px;
+}
+
+/* ---- Body defaults ---- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* ============================================================
+   AUTH PAGES
+   ============================================================ */
+.auth-page {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+}
+
+.auth-card {
+  border-radius: 1rem;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar-brand {
+  font-size: 1.35rem;
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   HERO / STAT CARDS
+   ============================================================ */
+.stat-card {
+  border-radius: 1rem;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+.stat-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+/* ============================================================
+   BOOK CARDS
+   ============================================================ */
+.book-card {
+  border-radius: 0.75rem;
+  border: 1px solid #dee2e6;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+}
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+}
+.book-cover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.75rem 0.75rem 0 0;
+  background-color: #e9ecef;
+}
+.book-cover-placeholder {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #e9ecef, #ced4da);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  font-size: 3rem;
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+.book-badge {
+  font-size: 0.72rem;
+  padding: 0.25em 0.6em;
+}
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+.section-header {
+  border-left: 4px solid var(--primary);
+  padding-left: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ============================================================
+   ADMIN LAYOUT
+   ============================================================ */
+.admin-layout {
+  background-color: #f1f3f5;
+}
+
+.admin-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.admin-sidebar .nav-link {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.admin-sidebar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+.table-hover tbody tr:hover {
+  background-color: rgba(13, 110, 253, 0.04);
+}
+
+/* ============================================================
+   STATUS BADGES
+   ============================================================ */
+.status-pending   { background-color: #ffc107; color: #212529; }
+.status-approved  { background-color: #0d6efd; color: #fff; }
+.status-borrowed  { background-color: #198754; color: #fff; }
+.status-returned  { background-color: #6c757d; color: #fff; }
+.status-declined  { background-color: #dc3545; color: #fff; }
+
+/* ============================================================
+   HERO BANNER (home page)
+   ============================================================ */
+.hero-banner {
+  background: linear-gradient(120deg, #0d6efd 0%, #6610f2 100%);
+  color: #fff;
+  border-radius: 1.25rem;
+  padding: 3rem 2rem;
+}
+
+/* ============================================================
+   FILTER SIDEBAR (books page)
+   ============================================================ */
+.filter-sidebar {
+  background: #fff;
+  border-radius: 0.75rem;
+  border: 1px solid #dee2e6;
+  padding: 1.25rem;
+}
+
+/* ============================================================
+   RESPONSIVE TWEAKS
+   ============================================================ */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    display: none !important;
+  }
+  .hero-banner {
+    padding: 2rem 1rem;
+  }
+}

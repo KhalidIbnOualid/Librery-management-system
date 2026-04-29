@@ -3,7 +3,7 @@
 
 USE library_management;
 
--- Default admin user  (password: Admin@1234)
+-- Default admin user  (email: admin@library.com  password: password)
 -- Hash generated with bcrypt rounds=10
 INSERT IGNORE INTO users (name, email, password_hash, role) VALUES
 ('Admin', 'admin@library.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
